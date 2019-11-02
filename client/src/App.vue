@@ -1,13 +1,19 @@
 <template lang="html">
 <div id="app">
 <h1>hi</h1>
+<launches-list :launches="launches" />
+<launch-detail />
 </div>
 </template>
 
 <script>
+import LaunchesList from './components/LaunchesList.vue'
+
 export default {
   name:"app",
-  components:{},
+  components:{
+    'launches-list': LaunchesList
+  },
   data(){
     return {
       launches: []
@@ -16,7 +22,7 @@ export default {
   mounted(){
     fetch('https://api.spacexdata.com/v3/launches')
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(data => this.launches = data)
   }
 }
 </script>
