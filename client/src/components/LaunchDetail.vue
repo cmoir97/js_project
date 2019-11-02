@@ -8,6 +8,7 @@
           <p>Launch site: {{ launch.launch_site.site_name }}</p>
           <p>Successful? {{ launch.launch_success }}</p>
           <p>{{ launch.details }}</p>
+          <a href="launch.links.video_link">Youtube Link</a>
 
 
         </div>
@@ -35,4 +36,5 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
 </style>
