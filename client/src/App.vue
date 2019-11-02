@@ -1,6 +1,6 @@
 <template lang="html">
 <div id="app">
-<h1>hi</h1>
+<h1>SpaceX Launch Tracker</h1>
 <launches-list :launches="launches" />
 <launch-detail />
 </div>
@@ -8,11 +8,15 @@
 
 <script>
 import LaunchesList from './components/LaunchesList.vue'
+import LaunchDetail from './components/LaunchDetail.vue'
+
+
 
 export default {
   name:"app",
   components:{
-    'launches-list': LaunchesList
+    'launches-list': LaunchesList,
+    'launch-detail': LaunchDetail
   },
   data(){
     return {

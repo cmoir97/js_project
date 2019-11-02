@@ -17,7 +17,20 @@
 </template>
 
 <script>
+import { eventBus } from '../main.js'
+
 export default {
+  name: 'launch-detail',
+  data(){
+    return {
+      launch: null
+    }
+  },
+  mounted(){
+    eventBus.$on('selected-launch', (launch) => {
+      this.launch = launch
+    })
+  }
 }
 </script>
 
