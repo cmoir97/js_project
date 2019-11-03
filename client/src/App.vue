@@ -6,12 +6,18 @@
 <launches-list :launches="launches" />
 <br>
 <launch-detail />
+
+<h1>Missions</h1>
+<br>
+<missions-list />
 </div>
 </template>
 
 <script>
 import LaunchesList from './components/LaunchesList.vue'
 import LaunchDetail from './components/LaunchDetail.vue'
+import MissionsList from './components/MissionsList.vue'
+
 
 
 
@@ -19,7 +25,8 @@ export default {
   name:"app",
   components:{
     'launches-list': LaunchesList,
-    'launch-detail': LaunchDetail
+    'launch-detail': LaunchDetail,
+    'missions-list': MissionsList
   },
   data(){
     return {
