@@ -1,5 +1,5 @@
 <template lang="html">
-  <div v-if="launch" id="missionDetail">
+  <div v-if="mission" id="missionDetail">
     <div id="detailWrapper">
       <h2>{{ mission.mission_name }}</h2>
       <div id="flexWrapper">

@@ -9,7 +9,9 @@
 
 <h1>Missions</h1>
 <br>
-<missions-list />
+<missions-list :missions="missions" />
+<br>
+<mission-detail />
 </div>
 </template>
 
@@ -17,6 +19,7 @@
 import LaunchesList from './components/LaunchesList.vue'
 import LaunchDetail from './components/LaunchDetail.vue'
 import MissionsList from './components/MissionsList.vue'
+import MissionDetail from './components/MissionDetail.vue'
 
 
 
@@ -26,7 +29,8 @@ export default {
   components:{
     'launches-list': LaunchesList,
     'launch-detail': LaunchDetail,
-    'missions-list': MissionsList
+    'missions-list': MissionsList,
+    'mission-detail': MissionDetail
   },
   data(){
     return {
