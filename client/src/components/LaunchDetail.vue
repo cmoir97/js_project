@@ -36,5 +36,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
-
+#launchDetail{
+  text-align: center;
+}
 </style>

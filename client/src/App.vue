@@ -1,10 +1,10 @@
 <template lang="html">
 <div id="app">
 <h1>SpaceX Launch Tracker</h1>
-<ul>
-  <li><a href="#">home</a></li>
-</ul>
+
+<br>
 <launches-list :launches="launches" />
+<br>
 <launch-detail />
 </div>
 </template>
@@ -23,13 +23,18 @@ export default {
   },
   data(){
     return {
-      launches: []
+      launches: [],
+      missions: []
     }
   },
   mounted(){
     fetch('https://api.spacexdata.com/v3/launches')
     .then(res => res.json())
-    .then(data => this.launches = data)
+    .then(data => this.launches = data);
+
+    fetch('https://api.spacexdata.com/v3/missions')
+    .then(res => res.json())
+    .then(data => this.missions = data)
   }
 }
 </script>
@@ -37,7 +42,7 @@ export default {
 <style lang="css" scoped>
 
 div{
-  display: flex;
+
   height: 100vh;
   justify-content: center;
   align-items: center;
@@ -49,12 +54,13 @@ div{
 ul {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  text-align: center;
   list-style-type: none;
 }
 
 li {
     padding: 6px 0;
+    text-align: center;
 }
 a {
       position: relative;
@@ -65,6 +71,7 @@ a {
       text-transform: uppercase;
       padding: 4px 0;
       transition: 0.5s;
+      text-align: center;
 }
   &::after {
         position: absolute;
