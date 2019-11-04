@@ -7,14 +7,14 @@
     <label for="description">Purpose of the mission:</label>
     <input type="text" id="description" name="description" v-model="description" required/>
 
-    <input type="submit" name="submit" value="Save" />
+    <input type="submit" id="save" value="Save" />
   </form>
 </template>
 
 
 <script>
 
-import { eventBus } from "@/main";
+import { eventBus } from "../main.js";
 import missionService from '../services/missionService.js'
 
 
@@ -24,14 +24,15 @@ export default {
     return {
       name: "",
       description: ""
-    };
+    }
   },
   methods: {
     handleSubmit(event) {
       event.preventDefault();
+
       const missionLoad = {
-        mission_name: this.mission_name,
-        mission_description: this.mission_description
+        name: this.name,
+        description: this.description
       };
       missionService.addMission(missionLoad)
       .then(mission => {

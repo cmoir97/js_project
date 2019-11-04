@@ -6,7 +6,6 @@
 <br>
 <launches-list :launches="launches" />
 <br>
-<h2>{{this.requestedMissions}}</h2>
 <launch-detail />
 <h1>Missions</h1>
 <br>
@@ -32,6 +31,7 @@ import MissionsList from './components/MissionsList.vue'
 import MissionDetail from './components/MissionDetail.vue'
 import LatestLaunch from './components/LatestLaunch.vue'
 import MissionForm from './components/MissionForm.vue'
+import { eventBus } from './main.js'
 
 
 
@@ -67,15 +67,12 @@ export default {
     .then(res => res.json())
     .then(data => this.latestLaunch = data)
 
-    eventBus.$on('submit-mission', (mission) => {
-    missionService.addMission(mission)
-    .then(missionWithId => this.requestedMissions.push(missionWithId))
+    eventBus.$on('submit-mission', mission => this.requestedMissions.push(mission));
 
     missionService.getMissions()
     .then(data => this.requestedMissions = data);
-});
+}
 
-    }
 }
 </script>
 
