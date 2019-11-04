@@ -1,18 +1,33 @@
 <template lang="html">
 <div id="app">
 <h1>SpaceX Launch Tracker</h1>
-<ul>
-  <li><a href="#">home</a></li>
-</ul>
+<br>
 <launches-list :launches="launches" />
+<br>
 <launch-detail />
+<h1>Missions</h1>
+<br>
+<missions-list :missions="missions" />
+<br>
+<mission-detail />
+<h1>Latest Launch</h1>
+<br>
+<latest-launch :latestLaunch="latestLaunch" />
 </div>
 </template>
+
 
 <script>
 import LaunchesList from './components/LaunchesList.vue'
 import LaunchDetail from './components/LaunchDetail.vue'
+<<<<<<< HEAD
 import missionService from "@/services/missionService"
+=======
+import MissionsList from './components/MissionsList.vue'
+import MissionDetail from './components/MissionDetail.vue'
+import LatestLaunch from './components/LatestLaunch.vue'
+
+>>>>>>> 5da8f6fe87aa4141687ea75c295834c26556ecca
 
 
 
@@ -20,25 +35,50 @@ export default {
   name:"app",
   components:{
     'launches-list': LaunchesList,
-    'launch-detail': LaunchDetail
+    'launch-detail': LaunchDetail,
+    'missions-list': MissionsList,
+    'mission-detail': MissionDetail,
+    'latest-launch': LatestLaunch,
+    'mission-form': MissionForm,
   },
   data(){
     return {
-      launches: []
+      launches: [],
+      missions: [],
+
+      latestLaunch: {}
     }
   },
   mounted(){
     fetch('https://api.spacexdata.com/v3/launches')
     .then(res => res.json())
-    .then(data => this.launches = data)
-  }
+    .then(data => this.launches = data);
+
+    fetch('https://api.spacexdata.com/v3/missions')
+    .then(res => res.json())
+    .then(data => this.missions = data)
+
+    fetch('https://api.spacexdata.com/v3/launches/latest')
+    .then(res => res.json())
+    .then(data => this.latestLaunch = data)
+
+    eventBus.$on('submit-mission', (mission) => {
+    missionService.addMission(mission)
+    .then(missionWithId => this.missions.push(missionWithId))
+
+    missionService.getMissions()
+    .then(data => this.missions = data);
+});
+
+    }
 }
 </script>
+
 
 <style lang="css" scoped>
 
 div{
-  display: flex;
+
   height: 100vh;
   justify-content: center;
   align-items: center;
@@ -50,12 +90,13 @@ div{
 ul {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  text-align: center;
   list-style-type: none;
 }
 
 li {
     padding: 6px 0;
+    text-align: center;
 }
 a {
       position: relative;
@@ -66,6 +107,7 @@ a {
       text-transform: uppercase;
       padding: 4px 0;
       transition: 0.5s;
+      text-align: center;
 }
   &::after {
         position: absolute;
