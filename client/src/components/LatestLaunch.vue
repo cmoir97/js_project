@@ -18,8 +18,6 @@ import { eventBus } from '../main.js'
 
 export default {
   name: 'latest-launch',
-  data(){
-  },
   props: ['latestLaunch']
 }
 </script>
