@@ -1,12 +1,12 @@
-const baseURL = 'http://localhost:3000/api/bookings/'
+const baseURL = 'http://localhost:3000/api/missions/'
 
 export default {
-  getBookings() {
+  getMissions() {
     return fetch(baseURL)
       .then(res => res.json())
   },
   addMission(mission) {
-    return fetch("http://localhost:3000/api/bookings/", {
+    return fetch("http://localhost:3000/api/missions/", {
       method: "POST",
       body: JSON.stringify(mission),
       headers: {

@@ -4,11 +4,13 @@
       <h2>{{ launch.mission_name }}</h2>
       <div id="flexWrapper">
         <div id="left">
-          <p>Launch date : {{ launch.launch_date_utc }}</p>
-          <p>Launch site: {{ launch.launch_site.site_name }}</p>
-          <p>Successful? {{ launch.launch_success }}</p>
+          <p>Launch date: {{ launch.launch_date_utc }}</p>
+          <p v-if="launch">Launch site: {{ launch.launch_site.site_name }}</p>
+          <p v-if="launch.launch_success == true || false">Launch Successful</p>
+          <p v-if="launch.launch_success == false">Launch Unsuccessful</p>
+          <p v-if="launch.launch_success == null">Upcoming Launch</p>
           <p>{{ launch.details }}</p>
-          <a href="launch.links.video_link">Youtube Link</a>
+          <iframe width="420" height="345" :src="`https://www.youtube.com/embed/${launch.links.youtube_id}`"></iframe>
 
 
         </div>
@@ -24,9 +26,10 @@ export default {
   name: 'launch-detail',
   data(){
     return {
-      launch: null
+      launch: {}
     }
   },
+  props: ['selected-launch'],
   mounted(){
     eventBus.$on('selected-launch', (launch) => {
       this.launch = launch
@@ -36,5 +39,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
-
+#launchDetail{
+  text-align: center;
+}
 </style>
