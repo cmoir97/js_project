@@ -4,10 +4,12 @@
     <div id="flexWrapper">
       <div id="left">
         <p>Launch date: {{ latestLaunch.launch_date_utc }}</p>
-        <p>Launch site: {{ latestLaunch.launch_site.site_name }}</p>
-        <p>Successful? {{ latestLaunch.launch_success }}</p>
+        <p v-if="latestLaunch">Launch site: {{ latestLaunch.launch_site.site_name }}</p>
+        <p v-if="latestLaunch.launch_success == true || false">Launch Successful</p>
+        <p v-if="latestLaunch.launch_success == false">Launch Unsuccessful</p>
+        <p v-if="latestLaunch.launch_success == null">Upcoming Launch</p>
         <p>{{ latestLaunch.details }}</p>
-        <a href="latestLaunch.links.video_link">Youtube Link</a>
+        <iframe width="420" height="345" :src="`https://www.youtube.com/embed/${latestLaunch.links.youtube_id}`"></iframe>
       </div>
     </div>
 </div>

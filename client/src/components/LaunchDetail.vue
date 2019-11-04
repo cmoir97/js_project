@@ -5,7 +5,7 @@
       <div id="flexWrapper">
         <div id="left">
           <p>Launch date: {{ launch.launch_date_utc }}</p>
-          <p>Launch site: {{ launch.launch_site.site_name }}</p>
+          <p v-if="launch">Launch site: {{ launch.launch_site.site_name }}</p>
           <p v-if="launch.launch_success == true || false">Launch Successful</p>
           <p v-if="launch.launch_success == false">Launch Unsuccessful</p>
           <p v-if="launch.launch_success == null">Upcoming Launch</p>
@@ -26,9 +26,10 @@ export default {
   name: 'launch-detail',
   data(){
     return {
-      launch: null
+      launch: {}
     }
   },
+  props: ['selected-launch'],
   mounted(){
     eventBus.$on('selected-launch', (launch) => {
       this.launch = launch
