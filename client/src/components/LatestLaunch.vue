@@ -1,6 +1,6 @@
 <template lang="html">
   <div id="detailWrapper">
-    <h2>View the Latest SpaceX Launch</h2>
+    <h2>The Latest SpaceX Launch</h2>
     <div id="flexWrapper">
       <div id="left">
         <p>Launch date: {{ launch.launch_date_utc }}</p>
@@ -15,21 +15,19 @@
 
 <script>
 export default {
+  name: 'latest-launch',
+  data(){
+    return {
+      launch: null
+    }
+  },
   mounted(){
-    fetch('https://api.spacexdata.com/v3/launches')
-    .then(res => res.json())
-    .then(launch => this.launches = launches)
+    eventBus.$on('latest-launch', (launch) => {
+      this.launch = launch
+    })
   }
 }
-
 </script>
 
 <style lang="css" scoped>
 </style>
-
-<!-- function getLatestDate(xs) {
-   if (xs.length) {
-      return xs.reduce((m, i) => (i.MeasureDate > m) && i || m, "")
-               .MeasureDate;
-   }
- } -->
