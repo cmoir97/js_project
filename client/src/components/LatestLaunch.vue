@@ -3,29 +3,24 @@
     <h2>The Latest SpaceX Launch</h2>
     <div id="flexWrapper">
       <div id="left">
-        <p>Launch date: {{ launch.launch_date_utc }}</p>
-        <p>Launch site: {{ launch.launch_site.site_name }}</p>
-        <p>Successful? {{ launch.launch_success }}</p>
-        <p>{{ launch.details }}</p>
-        <a href="launch.links.video_link">Youtube Link</a>
+        <p>Launch date: {{ latestLaunch.launch_date_utc }}</p>
+        <p>Launch site: {{ latestLaunch.launch_site.site_name }}</p>
+        <p>Successful? {{ latestLaunch.launch_success }}</p>
+        <p>{{ latestLaunch.details }}</p>
+        <a href="latestLaunch.links.video_link">Youtube Link</a>
       </div>
     </div>
 </div>
 </template>
 
 <script>
+import { eventBus } from '../main.js'
+
 export default {
   name: 'latest-launch',
   data(){
-    return {
-      launch: null
-    }
   },
-  mounted(){
-    eventBus.$on('latest-launch', (launch) => {
-      this.launch = launch
-    })
-  }
+  props: ['latestLaunch']
 }
 </script>
 
