@@ -12,8 +12,13 @@
 <missions-list :missions="missions" />
 <br>
 <mission-detail />
+
+<h1>Latest Launch</h1>
+<br>
+<latest-launch :latestLaunch="latestLaunch" />
 </div>
 </template>
+
 
 <script>
 import LaunchesList from './components/LaunchesList.vue'
@@ -50,12 +55,14 @@ export default {
     .then(res => res.json())
     .then(data => this.missions = data)
 
-    fetch('https://api.spacexdata.com/v3/missions')
+    fetch('https://api.spacexdata.com/v3/launches/latest')
     .then(res => res.json())
     .then(data => this.latestLaunch = data)
-  }
+
+    }
 }
 </script>
+
 
 <style lang="css" scoped>
 
