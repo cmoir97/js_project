@@ -20,6 +20,7 @@ import LaunchesList from './components/LaunchesList.vue'
 import LaunchDetail from './components/LaunchDetail.vue'
 import MissionsList from './components/MissionsList.vue'
 import MissionDetail from './components/MissionDetail.vue'
+import LatestLaunch from './components/LatestLaunch.vue'
 
 
 
@@ -30,12 +31,14 @@ export default {
     'launches-list': LaunchesList,
     'launch-detail': LaunchDetail,
     'missions-list': MissionsList,
-    'mission-detail': MissionDetail
+    'mission-detail': MissionDetail,
+    'latest-launch': LatestLaunch
   },
   data(){
     return {
       launches: [],
-      missions: []
+      missions: [],
+      latestLaunch: {}
     }
   },
   mounted(){
@@ -46,6 +49,10 @@ export default {
     fetch('https://api.spacexdata.com/v3/missions')
     .then(res => res.json())
     .then(data => this.missions = data)
+
+    fetch('https://api.spacexdata.com/v3/missions')
+    .then(res => res.json())
+    .then(data => this.latestLaunch = data)
   }
 }
 </script>
