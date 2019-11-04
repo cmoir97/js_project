@@ -15,22 +15,30 @@
 <script>
 
 import { eventBus } from "@/main";
+import missionService from '../services/missionService.js'
 
 
 export default {
-name: "mission-form",
-data() {
-  return {
-    name: "",
-    description: ""
-  };
-},
-methods: {
-  handleSubmit() {
-    eventBus.$emit("submit-mission", this.$data);
-    this.name = this.description = "";
+  name: "mission-form",
+  data() {
+    return {
+      name: "",
+      description: ""
+    };
+  },
+  methods: {
+    handleSubmit(event) {
+      event.preventDefault();
+      const missionLoad = {
+        mission_name: this.mission_name,
+        mission_description: this.mission_description
+      };
+      missionService.addMission(missionLoad)
+      .then(mission => {
+        eventBus.$emit('submit-mission', mission);
+      });
+    }
   }
-}
 };
 
 
