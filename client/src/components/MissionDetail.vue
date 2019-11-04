@@ -7,6 +7,8 @@
           <p>Mission Manufacturers : {{ mission.manufacturers }}</p>
           <p>Mission Payloads: {{ mission.payload_ids }}</p>
           <p>Mission Description {{ mission.description }}</p>
+          <a :href="`${mission.website}`" target="_blank">For more information, click here.</a>
+
 
 
         </div>
