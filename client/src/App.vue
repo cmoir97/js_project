@@ -1,4 +1,6 @@
 <template lang="html">
+  <body>
+
 <div id="app">
 <h1>SpaceX Launch Tracker</h1>
 <br>
@@ -14,6 +16,8 @@
 <br>
 <latest-launch :latestLaunch="latestLaunch" />
 </div>
+</body>
+
 </template>
 
 
@@ -76,6 +80,10 @@ export default {
 
 
 <style lang="css" scoped>
+
+body {
+  background-color: salmon;
+}
 
 div{
 
