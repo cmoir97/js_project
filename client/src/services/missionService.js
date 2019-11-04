@@ -6,7 +6,7 @@ export default {
       .then(res => res.json())
   },
   addMission(mission) {
-    return fetch("http://localhost:3000/api/missions/", {
+    return fetch(baseURL, {
       method: "POST",
       body: JSON.stringify(mission),
       headers: {
