@@ -12,8 +12,10 @@
           <p>{{ launch.details }}</p>
           <img :src="`${launch.links.flickr_images[0]}`" alt="Launch Image" style="width:300px;height:300px;">
           <iframe width="420" height="345" :src="`https://www.youtube.com/embed/${launch.links.youtube_id}`"></iframe>
-
-
+          <br>
+          <a :href="`${latestLaunch.links.article_link}`" target="_blank">In the news</a>
+          <br>
+          <a :href="`${launch.links.wikipedia}`" target="_blank">Find out more</a>
         </div>
       </div>
     </div>
