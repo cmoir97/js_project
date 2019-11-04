@@ -11,7 +11,7 @@
         <p>{{ latestLaunch.details }}</p>
         <img :src="`${latestLaunch.links.flickr_images[0]}`" alt="Launch Image" style="width:300px;height:300px;">
         <iframe width="420" height="345" :src="`https://www.youtube.com/embed/${latestLaunch.links.youtube_id}`"></iframe>
-        <a href="">In the news</a>
+        <a :href="`${latestLaunch.links.article_link}`" target="_blank">In the news</a>
       </div>
 
       <!-- "article_link": "https://spaceflightnow.com/2019/08/07/spacex-launches-israeli-owned-telecom-satellite/",
