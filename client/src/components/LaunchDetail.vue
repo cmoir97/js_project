@@ -6,7 +6,9 @@
         <div id="left">
           <p>Launch date: {{ launch.launch_date_utc }}</p>
           <p>Launch site: {{ launch.launch_site.site_name }}</p>
-          <p>Successful? {{ launch.launch_success }}</p>
+          <p v-if="launch.launch_success == true || false">Launch Successful</p>
+          <p v-if="launch.launch_success == false">Launch Unsuccessful</p>
+          <p v-if="launch.launch_success == null">Upcoming Launch</p>
           <p>{{ launch.details }}</p>
           <a href="launch.links.video_link">Youtube Link</a>
 
