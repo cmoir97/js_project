@@ -1,18 +1,15 @@
 <template lang="html">
 <div id="app">
 <h1>SpaceX Launch Tracker</h1>
-
 <br>
 <launches-list :launches="launches" />
 <br>
 <launch-detail />
-
 <h1>Missions</h1>
 <br>
 <missions-list :missions="missions" />
 <br>
 <mission-detail />
-
 <h1>Latest Launch</h1>
 <br>
 <latest-launch :latestLaunch="latestLaunch" />
