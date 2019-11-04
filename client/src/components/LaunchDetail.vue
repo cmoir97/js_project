@@ -10,6 +10,7 @@
           <p v-if="launch.launch_success == false">Launch Unsuccessful</p>
           <p v-if="launch.launch_success == null">Upcoming Launch</p>
           <p>{{ launch.details }}</p>
+          <img :src="`${launch.links.flickr_images[0]}`" alt="Launch Image" style="width:300px;height:300px;">
           <iframe width="420" height="345" :src="`https://www.youtube.com/embed/${launch.links.youtube_id}`"></iframe>
 
 
