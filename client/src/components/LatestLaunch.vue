@@ -5,7 +5,7 @@
       <div id="left">
         <p>Launch date: {{ latestLaunch.launch_date_utc }}</p>
         <p v-if="latestLaunch">Launch site: {{ latestLaunch.launch_site.site_name }}</p>
-        <p v-if="latestLaunch.launch_success == true || false">Launch Successful</p>
+        <p v-if="latestLaunch.launch_success === true || false">Launch Successful</p>
         <p v-if="latestLaunch.launch_success == false">Launch Unsuccessful</p>
         <p v-if="latestLaunch.launch_success == null">Upcoming Launch</p>
         <p>{{ latestLaunch.details }}</p>
