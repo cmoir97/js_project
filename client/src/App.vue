@@ -13,6 +13,7 @@
 <br>
 <mission-form />
 <br>
+<requested-mission-grid />
 <mission-detail />
 <h1>Latest Launch</h1>
 <br>
@@ -32,6 +33,7 @@ import MissionDetail from './components/MissionDetail.vue'
 import LatestLaunch from './components/LatestLaunch.vue'
 import MissionForm from './components/MissionForm.vue'
 import { eventBus } from './main.js'
+import RequestedMissionGrid from './components/RequestedMissionGrid.vue'
 
 
 
@@ -44,6 +46,7 @@ export default {
     'mission-detail': MissionDetail,
     'latest-launch': LatestLaunch,
     'mission-form': MissionForm,
+    'requested-mission-grid': RequestedMissionGrid
   },
   data(){
     return {
@@ -135,5 +138,6 @@ a {
         transform: scaleX(1);
         transform-origin: left;
       }
+
 
 </style>

@@ -7,6 +7,9 @@
     <label for="description">Purpose of the mission:</label>
     <input type="text" id="description" name="description" v-model="description" required/>
 
+    <label for="budget">Mission Budget:</label>
+    <input type="number" name="budget" v-model="budget" step="1000000" required placeholder="$"/>
+
     <input type="submit" id="save" value="Save" />
   </form>
 </template>
@@ -23,7 +26,8 @@ export default {
   data() {
     return {
       name: "",
-      description: ""
+      description: "",
+      budget: null
     }
   },
   methods: {
@@ -32,7 +36,8 @@ export default {
 
       const missionLoad = {
         name: this.name,
-        description: this.description
+        description: this.description,
+        budget: this.budget
       };
       missionService.addMission(missionLoad)
       .then(mission => {
