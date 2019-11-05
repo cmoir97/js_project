@@ -4,7 +4,8 @@
 <div id="app">
 <h1>SpaceX Launch Tracker</h1>
 <br>
-<h1>{{getNationality}}</h1>
+<h2>Hi</h2>
+<launch-nationality-chart />
 <launches-list :launches="launches" />
 <br>
 <launch-detail />
@@ -22,7 +23,6 @@
 <br>
 <h1>Launch Nationality Chart</h1>
 <p>This chart shows something about nationalities. </p>
-<launch-nationality-chart />
 </div>
 </body>
 
