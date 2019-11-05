@@ -1,4 +1,4 @@
-use missions;
+use spacexServer;
 db.dropDatabase.();
 
 db.missions.insertMany([
