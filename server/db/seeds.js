@@ -19,7 +19,12 @@ db.missions.insertMany([
   },
   {
     name: "HaggisSat",
-    description: "Improve TV signal to Shetland and Rockall.",
+    description: "Improve radio signal to Shetland.",
+    budget: 3000000
+  },
+  {
+    name: "PuffinSat",
+    description: "Improve TV signal to Rockall.",
     budget: 5000000
   }
 
