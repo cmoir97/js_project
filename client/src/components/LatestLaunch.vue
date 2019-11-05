@@ -2,7 +2,7 @@
   <div id="detailWrapper">
     <h2>The Latest SpaceX Launch</h2>
     <div id="flexWrapper">
-      <div id="left">
+      <div  v-if="latestLaunch" id="left">
         <p>Launch date: {{ latestLaunch.launch_date_utc }}</p>
         <p v-if="latestLaunch">Launch site: {{ latestLaunch.launch_site.site_name }}</p>
         <p v-if="latestLaunch.launch_success === true || false">Launch Successful</p>

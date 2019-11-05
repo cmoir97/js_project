@@ -5,7 +5,7 @@
 <h1>SpaceX Launch Tracker</h1>
 <br>
 <h2>Hi</h2>
-<launch-nationality-chart />
+<launch-nationality-chart/>
 <launches-list :launches="launches" />
 <br>
 <launch-detail />
@@ -65,7 +65,22 @@ export default {
   },
   computed: {
     getNationality() {
-      return this.launches.map(launch => launch.rocket.second_stage.payloads[0].nationality)
+      // return this.launches.map(launch => launch.rocket.second_stage.payloads[0].nationality)
+      return this.launches.map((launch) => {
+        return launch.rocket.second_stage.payloads[0].nationality;
+      })
+      .filter((uniqueLaunch, index, array) => {
+        return array.indexOf(uniqueLaunch) === index;
+      })
+
+//       Traveller.prototype.getUniqueModesOfTransport = function () {
+//   return this.journeys.map((journey) => {
+//    return journey.transport;
+//   })
+//   .filter((uniqueTransport, index, array) => {
+//     return array.indexOf(uniqueTransport) === index;
+//   })
+// };
     }
   },
   mounted(){
