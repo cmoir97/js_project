@@ -9,13 +9,18 @@ db.missions.insertMany([
   },
   {
     name: "ZsoltSat",
-    description: "Take high quality images of some Good Stuff",
+    description: "Take high quality images of some Good Stuff.",
     budget: 50000000
   },
   {
     name: "MuskNavBarSat",
-    description: "Maintain geostationary orbit",
+    description: "Maintain geostationary orbit.",
     budget: 10000000
+  },
+  {
+    name: "HaggisSat",
+    description: "Improve TV signal to Shetland and Rockall.",
+    budget: 5000000
   }
 
 ])
