@@ -18,6 +18,10 @@
 <h1>Latest Launch</h1>
 <br>
 <latest-launch :latestLaunch="latestLaunch" />
+<br>
+<h1>Launch Nationality Chart</h1>
+<p>This chart shows something about nationalities. </p>
+<launch-nationality-chart :launchNationalityChart />
 </div>
 </body>
 
@@ -34,6 +38,7 @@ import LatestLaunch from './components/LatestLaunch.vue'
 import MissionForm from './components/MissionForm.vue'
 import { eventBus } from './main.js'
 import RequestedMissionGrid from './components/RequestedMissionGrid.vue'
+import launchNationalityChart from './components/launchNationalityChart.vue'
 
 
 
@@ -46,14 +51,14 @@ export default {
     'mission-detail': MissionDetail,
     'latest-launch': LatestLaunch,
     'mission-form': MissionForm,
-    'requested-mission-grid': RequestedMissionGrid
+    'requested-mission-grid': RequestedMissionGrid,
+    'launch-nationality-chart': launchNationalityChart
   },
   data(){
     return {
       launches: [],
       missions: [],
       requestedMissions: [],
-
       latestLaunch: {}
     }
   },
