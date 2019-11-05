@@ -4,6 +4,7 @@
 <div id="app">
 <h1>SpaceX Launch Tracker</h1>
 <br>
+<h1>{{getNationality}}</h1>
 <launches-list :launches="launches" />
 <br>
 <launch-detail />
@@ -21,7 +22,7 @@
 <br>
 <h1>Launch Nationality Chart</h1>
 <p>This chart shows something about nationalities. </p>
-<launch-nationality-chart :launchNationalityChart />
+<launch-nationality-chart />
 </div>
 </body>
 
@@ -38,7 +39,7 @@ import LatestLaunch from './components/LatestLaunch.vue'
 import MissionForm from './components/MissionForm.vue'
 import { eventBus } from './main.js'
 import RequestedMissionGrid from './components/RequestedMissionGrid.vue'
-import launchNationalityChart from './components/launchNationalityChart.vue'
+import LaunchNationalityChart from './components/LaunchNationalityChart.vue'
 
 
 
@@ -52,7 +53,7 @@ export default {
     'latest-launch': LatestLaunch,
     'mission-form': MissionForm,
     'requested-mission-grid': RequestedMissionGrid,
-    'launch-nationality-chart': launchNationalityChart
+    'launch-nationality-chart': LaunchNationalityChart
   },
   data(){
     return {
@@ -60,6 +61,11 @@ export default {
       missions: [],
       requestedMissions: [],
       latestLaunch: {}
+    }
+  },
+  computed: {
+    getNationality() {
+      return this.launches.map(launch => launch.rocket.second_stage.payloads[0].nationality)
     }
   },
   mounted(){
