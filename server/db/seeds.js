@@ -11,6 +11,11 @@ db.missions.insertMany([
     name: "ZsoltSat",
     description: "Take high quality images of some Good Stuff",
     budget: 50000000
+  },
+  {
+    name: "MuskNavBarSat",
+    description: "Maintain geostationary orbit"
+    budget: 10000000
   }
 
 ])
