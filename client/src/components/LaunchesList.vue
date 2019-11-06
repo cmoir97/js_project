@@ -1,8 +1,8 @@
 <template lang="html">
   <form v-on:submit.prevent>
 <select v-on:change="handleSelect" v-model="selectedLaunch">
-  <option disabled value="">Choose a launch</option>
-  <option v-for="launch in launches" :value="launch">{{ launch.mission_name }}</option>
+  <option disabled  value="">Choose Launch</option>
+  <option v-for="(launch, index) in launches" :value="launch">{{ launch.mission_name }}</option>
 </select>
  </form>
 </template>
@@ -14,7 +14,7 @@ export default {
   name: "launches-list",
   data(){
     return {
-    selectedLaunch: {},
+    selectedLaunch: launches[0],
   }
 },
   props: ['launches'],
