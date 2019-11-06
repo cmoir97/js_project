@@ -1,5 +1,5 @@
 use spacexServer;
-db.dropDatabase.();
+db.dropDatabase();
 
 
 db.missions.insertMany([
