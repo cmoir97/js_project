@@ -29,4 +29,9 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
+.requested-mission-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
 </style>
