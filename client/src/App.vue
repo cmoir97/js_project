@@ -24,7 +24,7 @@
 <mission-form />
 <requested-mission-grid />
 <mission-detail />
-<h1>Latest Launch</h1>
+<h1>The Latest SpaceX Launch</h1>
 <latest-launch :latestLaunch="latestLaunch" />
 </div>
 </body>

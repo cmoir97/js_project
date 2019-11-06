@@ -1,6 +1,5 @@
 <template lang="html">
   <div id="detailWrapper">
-    <h2>The Latest SpaceX Launch</h2>
     <div id="flexWrapper">
       <div  v-if="latestLaunch" id="left">
         <p>Launch date: {{ latestLaunch.launch_date_utc }}</p>
@@ -33,4 +32,15 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
+.detailWrapper {
+  background-color: teal;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 10px;
+  /* height: 150px;
+  width: 250px; */
+  align-items: center;
+}
 </style>
