@@ -19,6 +19,12 @@ export default {
   data () {
     return {
       chartOptions: {
+        backgroundColor: '#222',
+        legend: {
+        textStyle: {
+          color: '#FFFFFF'
+        }
+        },
         chart: {
           title: 'Company Performance',
           subtitle: 'Sales, Expenses, and Profit: 2014-2017'
@@ -31,4 +37,6 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
+
 </style>
