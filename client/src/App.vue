@@ -25,12 +25,13 @@
 
 
 <div :selectedView="selectedView" v-if="selectedView === 'launches'">
+  <h1>SpaceX Launches</h1>
 <launches-list :launches="launches" />
 <launch-detail />
 </div>
 
 <div :selectedView="selectedView" v-if="selectedView === 'missions'">
-<h1>Missions</h1>
+<h1>SpaceX Missions</h1>
 <missions-list :missions="missions" />
 <mission-detail />
 </div>
