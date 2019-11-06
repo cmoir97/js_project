@@ -3,15 +3,10 @@
 
 <div id="app">
 <h1>SpaceX Launch Tracker</h1>
-
 <h1>Launch Nationality Chart</h1>
-<h1>{{getNationality}}</h1>
 <p>This chart shows something about nationalities. </p>
-<!-- <launch-nationality-chart v-if="chartData" :chartData="chartData"/> -->
-
 <br>
-<h2>Hi</h2>
-<launch-nationality-chart/>
+<launch-nationality-chart :refactoredChartData="refactoredChartData"/>
 <launches-list :launches="launches" />
 <br>
 <launch-detail />
@@ -86,8 +81,16 @@ export default {
         const numberOfOccurrences = this.nationalities.reduce((accumulator, nation) => {
           return accumulator + (nation === uniqueNation);
         }, 0);
-        return [uniqueNation, numberOfOccurences]
+        return [uniqueNation, numberOfOccurrences]
       })
+    },
+
+    refactoredChartData() {
+       const chartHeader = [["Nationality", "Number of Occurrences"]];
+       return chartHeader.concat(this.chartData)
+    },
+    splicedRefactoredChartData() {
+      return this.refactoredChartData.splice(20, 1)
     }
 
   },
@@ -109,8 +112,8 @@ export default {
 
     eventBus.$on('submit-mission', mission => this.requestedMissions.push(mission));
 
-    // missionService.getMissions()
-    // .then(data => this.requestedMissions = data);
+    missionService.getMissions()
+    .then(data => this.requestedMissions = data);
 }
 
 }
