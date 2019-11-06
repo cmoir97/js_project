@@ -26,12 +26,14 @@
 
 <div :selectedView="selectedView" v-if="selectedView === 'launches'">
   <h1>SpaceX Launches</h1>
+  <p>Use this menu to select and views details about past and future SpaceX launches.</p>
 <launches-list :launches="launches" />
 <launch-detail />
 </div>
 
 <div :selectedView="selectedView" v-if="selectedView === 'missions'">
 <h1>SpaceX Missions</h1>
+<p>Use this menu to select and views details about SpaceX missions.</p>
 <missions-list :missions="missions" />
 <mission-detail />
 </div>
@@ -166,6 +168,10 @@ export default {
 
 
 <style lang="css" scoped>
+
+h1 {
+  font-size: 70px;
+}
 
 body {
   background-color: #222;
