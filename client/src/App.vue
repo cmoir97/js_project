@@ -3,6 +3,12 @@
 
 <div id="app">
 <h1>SpaceX Launch Tracker</h1>
+
+<h1>Launch Nationality Chart</h1>
+<h1>{{getNationality}}</h1>
+<p>This chart shows something about nationalities. </p>
+<!-- <launch-nationality-chart v-if="chartData" :chartData="chartData"/> -->
+
 <br>
 <launches-list :launches="launches" />
 <br>
@@ -19,9 +25,7 @@
 <br>
 <latest-launch :latestLaunch="latestLaunch" />
 <br>
-<h1>Launch Nationality Chart</h1>
-<p>This chart shows something about nationalities. </p>
-<launch-nationality-chart :launchNationalityChart />
+
 </div>
 </body>
 
@@ -38,7 +42,7 @@ import LatestLaunch from './components/LatestLaunch.vue'
 import MissionForm from './components/MissionForm.vue'
 import { eventBus } from './main.js'
 import RequestedMissionGrid from './components/RequestedMissionGrid.vue'
-import launchNationalityChart from './components/launchNationalityChart.vue'
+import LaunchNationalityChart from './components/LaunchNationalityChart.vue'
 
 
 
@@ -52,7 +56,7 @@ export default {
     'latest-launch': LatestLaunch,
     'mission-form': MissionForm,
     'requested-mission-grid': RequestedMissionGrid,
-    'launch-nationality-chart': launchNationalityChart
+    'launch-nationality-chart': LaunchNationalityChart
   },
   data(){
     return {
@@ -62,6 +66,19 @@ export default {
       latestLaunch: {}
     }
   },
+  methods: {
+  },
+  computed: {
+   chartData: function() {
+      return this.launches.map((launch) => {
+      return launch.rocket.second_stage.payloads[0].nationality})
+    },
+    getNationality() {
+      this.launches.map((launch) => {
+        console.log(launch.rocket.second_stage.payloads[0].nationality)
+      })
+    }
+},
   mounted(){
     fetch('https://api.spacexdata.com/v3/launches')
     .then(res => res.json())
@@ -74,6 +91,9 @@ export default {
     fetch('https://api.spacexdata.com/v3/launches/latest')
     .then(res => res.json())
     .then(data => this.latestLaunch = data)
+
+
+
 
     eventBus.$on('submit-mission', mission => this.requestedMissions.push(mission));
 
