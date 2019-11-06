@@ -1,14 +1,20 @@
 <template lang="html">
   <body>
+    <h1>SpaceX Launch Tracker</h1>
 
 <div id="app">
-  <!-- <div class="navbar">
+<div class="navbar">
 
-  <button type="button" name="button" @click="homeClick"></button>
+  <button type="button" @click="homeClick">1</button>
+  <button type="button" @click="launchClick">2</button>
+  <button type="button" @click="missionClick">3</button>
+  <button type="button" @click="requestMissionClick">4</button>
+  <button type="button" @click="chartClick">5</button>
 
-</div> -->
-<div id="intro">
-<h1>SpaceX Launch Tracker</h1>
+</div>
+<div>
+<div :selectedView="selectedView" v-if="selectedView === 'home'">
+<h1>Latest Launch</h1>
 <p>SpaceX is an American aerospace company founded in 2002 that helped usher in the era of commercial spaceflight. Its headquarters are in Hawthorne, California.</p>
 
 <p>SpaceX was formed by entrepreneur Elon Musk in the hopes of revolutionising the aerospace industry and making affordable spaceflight a reality. The company entered the arena with the Falcon 1 rocket, a two-stage liquid-fueled craft designed to send small satellites into orbit. The Falcon 1 was vastly cheaper to build and operate than its competitors, a field largely populated by spacecraft built by publicly owned and government-funded companies, such as Lockheed Martin and Boeing. Part of the rocket’s cost-effectiveness was made possible by the SpaceX-developed Merlin engine, a cheaper alternative to those used by other companies. SpaceX also focused on making reusable rockets (other launch vehicles are generally made for one-time use).</p>
@@ -18,16 +24,33 @@
 
 <h1>Launch Nationality Chart</h1>
 <p>This chart shows the nationality of each launch's main client. </p>
-<launch-nationality-chart :splicedRefactoredChartData="splicedRefactoredChartData"/>
+<latest-launch :latestLaunch="latestLaunch" />
+</div>
+
+
+<div :selectedView="selectedView" v-if="selectedView === 'launches'">
 <launches-list :launches="launches" />
 <launch-detail />
+</div>
+
+<div :selectedView="selectedView" v-if="selectedView === 'missions'">
 <h1>Missions</h1>
 <missions-list :missions="missions" />
-<mission-form />
-<requested-mission-grid />
 <mission-detail />
-<h1>The Latest SpaceX Launch</h1>
-<latest-launch :latestLaunch="latestLaunch" />
+</div>
+
+<div :selectedView="selectedView" v-if="selectedView === 'requestMission'">
+<requested-mission-grid />
+<mission-form />
+</div>
+
+<div :selectedView="selectedView" v-if="selectedView === 'chart'">
+<h1>Launch Nationality Chart</h1>
+<p>This chart shows the nationality of each launch's main client. </p>
+<launch-nationality-chart :splicedRefactoredChartData="splicedRefactoredChartData"/>
+</div>
+</div>
+
 </div>
 </body>
 
@@ -66,7 +89,7 @@ export default {
       missions: [],
       requestedMissions: [],
       latestLaunch: {},
-      selectedView: 'Home'
+      selectedView: 'home'
     }
   },
   computed: {
@@ -104,7 +127,19 @@ export default {
   },
   methods: {
     homeClick() {
-      this.selectedView = home
+      this.selectedView = 'home';
+    },
+    launchClick() {
+      this.selectedView = 'launches';
+    },
+    missionClick() {
+      this.selectedView = 'missions';
+    },
+    requestMissionClick() {
+      this.selectedView = 'requestMission';
+    },
+    chartClick() {
+      this.selectedView = 'chart';
     }
   },
   mounted(){
