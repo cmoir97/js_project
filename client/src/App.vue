@@ -1,26 +1,47 @@
 <template lang="html">
   <body>
+    <h1>SpaceX Launch Tracker</h1>
 
 <div id="app">
-  <div class="navbar">
+<div class="navbar">
 
-  <button type="button" name="button" @click="homeClick"></button>
+  <button type="button" @click="homeClick">1</button>
+  <button type="button" @click="launchClick">2</button>
+  <button type="button" @click="missionClick">3</button>
+  <button type="button" @click="requestMissionClick">4</button>
+  <button type="button" @click="chartClick">5</button>
 
 </div>
+<div>
+<div :selectedView="selectedView" v-if="selectedView === 'home'">
+<h1>Latest Launch</h1>
+<latest-launch :latestLaunch="latestLaunch" />
+</div>
 
-<h1>SpaceX Launch Tracker</h1>
+
+<div :selectedView="selectedView" v-if="selectedView === 'launches'">
+<launches-list :launches="launches" />
+<launch-detail />
+</div>
+
+<div :selectedView="selectedView" v-if="selectedView === 'missions'">
+<h1>Missions</h1>
+<missions-list :missions="missions" />
+<mission-detail />
+</div>
+
+<div :selectedView="selectedView" v-if="selectedView === 'requestMission'">
+<requested-mission-grid />
+<mission-form />
+</div>
+
+<div :selectedView="selectedView" v-if="selectedView === 'chart'">
 <h1>Launch Nationality Chart</h1>
 <p>This chart shows the nationality of each launch's main client. </p>
 <launch-nationality-chart :splicedRefactoredChartData="splicedRefactoredChartData"/>
-<launches-list :launches="launches" />
-<launch-detail />
-<h1>Missions</h1>
-<missions-list :missions="missions" />
-<mission-form />
-<requested-mission-grid />
-<mission-detail />
-<h1>Latest Launch</h1>
-<latest-launch :latestLaunch="latestLaunch" />
+</div>
+</div>
+
 </div>
 </body>
 
@@ -58,8 +79,8 @@ export default {
       launches: [],
       missions: [],
       requestedMissions: [],
-      latestLaunch: {}
-      selectedView: 'Home'
+      latestLaunch: {},
+      selectedView: 'home'
     }
   },
   computed: {
@@ -97,7 +118,19 @@ export default {
   },
   methods: {
     homeClick() {
-      this.selectedView = home 
+      this.selectedView = 'home';
+    },
+    launchClick() {
+      this.selectedView = 'launches';
+    },
+    missionClick() {
+      this.selectedView = 'missions';
+    },
+    requestMissionClick() {
+      this.selectedView = 'requestMission';
+    },
+    chartClick() {
+      this.selectedView = 'chart';
     }
   },
   mounted(){
