@@ -1,6 +1,7 @@
 <template lang="html">
   <div id="detailWrapper">
     <div id="flexWrapper">
+      <h1>Latest SpaceX Launch</h1>
       <div  v-if="latestLaunch" id="left">
         <p>Launch date: {{ latestLaunch.launch_date_utc }}</p>
         <p v-if="latestLaunch">Launch site: {{ latestLaunch.launch_site.site_name }}</p>
@@ -60,5 +61,8 @@ iframe{
 #mediaBox {
   display: inline-flex;
 
+}
+a {
+  color: white;
 }
 </style>

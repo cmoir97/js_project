@@ -1,56 +1,60 @@
 <template lang="html">
   <body>
-    <h1>SpaceX Launch Tracker</h1>
 
-<div id="app">
-<div class="navbar">
+    <img id="logo" src="./assets/navtav_logo.jpg">
+    <div id="app">
+      <div class="navbar">
 
-  <button type="button" @click="homeClick">1</button>
-  <button type="button" @click="launchClick">2</button>
-  <button type="button" @click="missionClick">3</button>
-  <button type="button" @click="requestMissionClick">4</button>
-  <button type="button" @click="chartClick">5</button>
+        <button type="button" @click="homeClick">Home</button>
+        <button type="button" @click="launchClick">SpaceX Launches</button>
+        <button type="button" @click="missionClick">SpaceX Missions</button>
+        <button type="button" @click="requestMissionClick">Request a SpaceX Mission</button>
+        <button type="button" @click="chartClick">View SpaceX Launch Data</button>
 
-</div>
-<div  :selectedView="selectedView" v-if="selectedView === 'home'">
-<h1>Latest Launch</h1>
-<p>SpaceX is an American aerospace company founded in 2002 that helped usher in the era of commercial spaceflight. Its headquarters are in Hawthorne, California.</p>
+      </div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <div  :selectedView="selectedView" v-if="selectedView === 'home'">
+        <p>SpaceX is an American aerospace company founded in 2002 that helped usher in the era of commercial spaceflight. Its headquarters are in Hawthorne, California.</p>
 
-<p>SpaceX was formed by entrepreneur Elon Musk in the hopes of revolutionising the aerospace industry and making affordable spaceflight a reality. The company entered the arena with the Falcon 1 rocket, a two-stage liquid-fueled craft designed to send small satellites into orbit. The Falcon 1 was vastly cheaper to build and operate than its competitors, a field largely populated by spacecraft built by publicly owned and government-funded companies, such as Lockheed Martin and Boeing. Part of the rocket’s cost-effectiveness was made possible by the SpaceX-developed Merlin engine, a cheaper alternative to those used by other companies. SpaceX also focused on making reusable rockets (other launch vehicles are generally made for one-time use).</p>
+        <p>SpaceX was formed by entrepreneur Elon Musk in the hopes of revolutionising the aerospace industry and making affordable spaceflight a reality. The company entered the arena with the Falcon 1 rocket, a two-stage liquid-fueled craft designed to send small satellites into orbit. The Falcon 1 was vastly cheaper to build and operate than its competitors, a field largely populated by spacecraft built by publicly owned and government-funded companies, such as Lockheed Martin and Boeing. Part of the rocket’s cost-effectiveness was made possible by the SpaceX-developed Merlin engine, a cheaper alternative to those used by other companies. SpaceX also focused on making reusable rockets (other launch vehicles are generally made for one-time use).</p>
 
-<p>Use the SpaceX Tracker App to find information about its launches and missions, view data about its launches, and even suggest your own mission for SpaceX to complete in the future!</p>
+        <p>Use the SpaceX Tracker App to find information about its launches and missions, view data about its launches, and even suggest your own mission for SpaceX to complete in the future!</p>
 
-<latest-launch :latestLaunch="latestLaunch" />
-</div>
+        <latest-launch :latestLaunch="latestLaunch" />
+      </div>
 
 
-<div :selectedView="selectedView" v-if="selectedView === 'launches'">
-  <h1>SpaceX Launches</h1>
-  <p>Use this menu to select and views details about past and future SpaceX launches.</p>
-<launches-list :launches="launches" />
-<launch-detail />
-</div>
+      <div :selectedView="selectedView" v-if="selectedView === 'launches'">
+        <h1>SpaceX Launches</h1>
+        <p>Use this menu to select and views details about past and future SpaceX launches.</p>
+        <launches-list :launches="launches" />
+        <launch-detail />
+      </div>
 
-<div :selectedView="selectedView" v-if="selectedView === 'missions'">
-<h1>SpaceX Missions</h1>
-<p>Use this menu to select and views details about SpaceX missions.</p>
-<missions-list :missions="missions" />
-<mission-detail />
-</div>
+      <div :selectedView="selectedView" v-if="selectedView === 'missions'">
+        <h1>SpaceX Missions</h1>
+        <p>Use this menu to select and views details about SpaceX missions.</p>
+        <missions-list :missions="missions" />
+        <mission-detail />
+      </div>
 
-<div :selectedView="selectedView" v-if="selectedView === 'requestMission'">
-<requested-mission-grid />
-<mission-form />
-</div>
+      <div :selectedView="selectedView" v-if="selectedView === 'requestMission'">
+        <mission-form />
+        <br>
+        <requested-mission-grid />
+      </div>
 
-<div :selectedView="selectedView" v-if="selectedView === 'chart'">
-<h1>Launch Nationality Chart</h1>
-<p>This chart shows the nationality of each launch's main client. </p>
-<launch-nationality-chart :splicedRefactoredChartData="splicedRefactoredChartData"/>
-</div>
-</div>
+      <div :selectedView="selectedView" v-if="selectedView === 'chart'">
+        <h1>Launch Nationality Chart</h1>
+        <p>This chart shows the nationality of each launch's main client. </p>
+        <launch-nationality-chart :splicedRefactoredChartData="splicedRefactoredChartData"/>
+      </div>
+    </div>
 
-</div>
+  </div>
 </body>
 
 </template>
@@ -113,8 +117,8 @@ export default {
     },
 
     refactoredChartData() {
-       const chartHeader = [["Nationality", "Number of Occurrences"]];
-       return chartHeader.concat(this.chartData)
+      const chartHeader = [["Nationality", "Number of Occurrences"]];
+      return chartHeader.concat(this.chartData)
     },
     splicedRefactoredChartData() {
       const newArray = this.refactoredChartData.slice()
@@ -161,7 +165,7 @@ export default {
 
     missionService.getMissions()
     .then(data => this.requestedMissions = data);
-}
+  }
 
 }
 </script>
@@ -174,7 +178,7 @@ h1 {
 }
 
 body {
-  background-color: #222;
+  background-color: black;
   font-family: Arial;
 }
 
@@ -185,7 +189,7 @@ div{
   align-items: center;
   text-align: center;
   color: white;
-  background: #222;
+  background: black;
   border-radius: 50;
   border-color: salmon;
 
@@ -199,35 +203,54 @@ ul {
 }
 
 li {
-    padding: 6px 0;
-    text-align: center;
+  padding: 6px 0;
+  text-align: center;
 }
 a {
-      position: relative;
-      display: block;
-      text-decoration: none;
-      font-family: "Lato";
-      color: white;
-      text-transform: uppercase;
-      padding: 4px 0;
-      transition: 0.5s;
-      text-align: center;
+  position: relative;
+  display: block;
+  text-decoration: none;
+  font-family: "Lato";
+  color: white;
+  text-transform: uppercase;
+  padding: 4px 0;
+  transition: 0.5s;
+  text-align: center;
 }
-      &:hover {
-        color: lightgreen;
-      }
+&:hover {
+  color: lightgreen;
+}
 
-      &:hover::after {
-        transform: scaleX(1);
-        transform-origin: left;
-      }
+&:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
 
-      #intro {
-        background-color: teal;
-        border: 1px solid black;
-        border-radius: 20px;
-        padding: 20px;
-        margin: 10px;
-        align-items: center;
-      }
+#intro {
+  background-color: teal;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 10px;
+  align-items: center;
+}
+button {
+  font-size: 20px;
+  border-radius: 3px
+}
+#logo{
+  height: 200px;
+  width: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+.navbar{
+  border-radius: 100px;
+}
+button:hover {
+	background: black;
+	color: teal;
+}
 </style>
