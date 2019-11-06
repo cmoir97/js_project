@@ -27,8 +27,9 @@ export default {
         },
         chart: {
           title: 'Company Performance',
-          subtitle: 'Sales, Expenses, and Profit: 2014-2017'
-        }
+          subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+        },
+        height: "600"
       },
     }
   },
@@ -37,6 +38,5 @@ export default {
 </script>
 
 <style lang="css" scoped>
-
 
 </style>
