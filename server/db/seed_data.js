@@ -14,7 +14,7 @@ db.missions.insertMany([
     budget: 50000000
   },
   {
-    name: "MuskNavBarSat",
+    name: "MuskSat",
     description: "Maintain geostationary orbit.",
     budget: 10000000
   },
