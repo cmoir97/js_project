@@ -2,9 +2,15 @@
   <body>
 
 <div id="app">
+  <div class="navbar">
+
+  <button type="button" name="button" @click="homeClick"></button>
+
+</div>
+
 <h1>SpaceX Launch Tracker</h1>
 <h1>Launch Nationality Chart</h1>
-<p>This chart shows something about nationalities. </p>
+<p>This chart shows the nationality of each launch's main client. </p>
 <launch-nationality-chart :splicedRefactoredChartData="splicedRefactoredChartData"/>
 <launches-list :launches="launches" />
 <launch-detail />
@@ -15,8 +21,6 @@
 <mission-detail />
 <h1>Latest Launch</h1>
 <latest-launch :latestLaunch="latestLaunch" />
-<h1>Launch Nationality Chart</h1>
-<p>This chart shows something about nationalities. </p>
 </div>
 </body>
 
@@ -55,6 +59,7 @@ export default {
       missions: [],
       requestedMissions: [],
       latestLaunch: {}
+      selectedView: 'Home'
     }
   },
   computed: {
@@ -89,6 +94,11 @@ export default {
 
     }
 
+  },
+  methods: {
+    homeClick() {
+      this.selectedView = home 
+    }
   },
   mounted(){
     fetch('https://api.spacexdata.com/v3/launches')
