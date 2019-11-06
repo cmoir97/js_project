@@ -1,8 +1,8 @@
 <template lang="html">
 <GChart
-v-if="refactoredChartData"
+v-if="splicedRefactoredChartData"
 type="PieChart"
-:data="refactoredChartData"
+:data="splicedRefactoredChartData"
 :options="chartOptions"
 />
 
@@ -26,7 +26,7 @@ export default {
       },
     }
   },
-  props: ["refactoredChartData"]
+  props: ["splicedRefactoredChartData"]
 }
 </script>
 

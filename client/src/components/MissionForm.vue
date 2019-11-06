@@ -58,4 +58,7 @@ export default {
 
 
 <style lang="css" scoped>
+input {
+  border-radius: 1000px;
+}
 </style>

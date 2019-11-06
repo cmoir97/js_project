@@ -5,23 +5,16 @@
 <h1>SpaceX Launch Tracker</h1>
 <h1>Launch Nationality Chart</h1>
 <p>This chart shows something about nationalities. </p>
-<br>
-<launch-nationality-chart :refactoredChartData="refactoredChartData"/>
+<launch-nationality-chart :splicedRefactoredChartData="splicedRefactoredChartData"/>
 <launches-list :launches="launches" />
-<br>
 <launch-detail />
 <h1>Missions</h1>
-<br>
 <missions-list :missions="missions" />
-<br>
 <mission-form />
-<br>
 <requested-mission-grid />
 <mission-detail />
 <h1>Latest Launch</h1>
-<br>
 <latest-launch :latestLaunch="latestLaunch" />
-<br>
 <h1>Launch Nationality Chart</h1>
 <p>This chart shows something about nationalities. </p>
 </div>
@@ -90,7 +83,10 @@ export default {
        return chartHeader.concat(this.chartData)
     },
     splicedRefactoredChartData() {
-      return this.refactoredChartData.splice(20, 1)
+      const newArray = this.refactoredChartData.slice()
+      newArray.splice(20,1)
+      return newArray
+
     }
 
   },
