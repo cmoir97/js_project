@@ -72,16 +72,21 @@ export default {
   computed: {
     nationalities() {
       return this.launches.map(launch => launch.rocket.second_stage.payloads[0].nationality)
-
-
-
     },
-    getUniqueNationalities() {
+    uniqueNationalities() {
       return this.launches.map((launch) => {
         return launch.rocket.second_stage.payloads[0].nationality;
       })
       .filter((uniqueLaunch, index, array) => {
         return array.indexOf(uniqueLaunch) === index;
+      })
+    },
+    chartData() {
+      return this.uniqueNationalities.map((uniqueNation) => {
+        const numberOfOccurrences = this.nationalities.reduce((accumulator, nation) => {
+          return accumulator + (nation === uniqueNation);
+        }, 0);
+        return [uniqueNation, numberOfOccurences]
       })
     }
 
