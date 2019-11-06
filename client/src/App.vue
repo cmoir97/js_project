@@ -10,6 +10,8 @@
 <!-- <launch-nationality-chart v-if="chartData" :chartData="chartData"/> -->
 
 <br>
+<h2>Hi</h2>
+<launch-nationality-chart/>
 <launches-list :launches="launches" />
 <br>
 <launch-detail />
@@ -25,7 +27,8 @@
 <br>
 <latest-launch :latestLaunch="latestLaunch" />
 <br>
-
+<h1>Launch Nationality Chart</h1>
+<p>This chart shows something about nationalities. </p>
 </div>
 </body>
 
@@ -66,19 +69,23 @@ export default {
       latestLaunch: {}
     }
   },
-  methods: {
-  },
   computed: {
-   chartData: function() {
-      return this.launches.map((launch) => {
-      return launch.rocket.second_stage.payloads[0].nationality})
+    nationalities() {
+      return this.launches.map(launch => launch.rocket.second_stage.payloads[0].nationality)
+
+
+
     },
-    getNationality() {
-      this.launches.map((launch) => {
-        console.log(launch.rocket.second_stage.payloads[0].nationality)
+    getUniqueNationalities() {
+      return this.launches.map((launch) => {
+        return launch.rocket.second_stage.payloads[0].nationality;
+      })
+      .filter((uniqueLaunch, index, array) => {
+        return array.indexOf(uniqueLaunch) === index;
       })
     }
-},
+
+  },
   mounted(){
     fetch('https://api.spacexdata.com/v3/launches')
     .then(res => res.json())
