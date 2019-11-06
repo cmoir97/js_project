@@ -44,5 +44,14 @@ export default {
 <style lang="css" scoped>
 #launchDetail{
   text-align: center;
+  background-color: teal;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 10px;
+  align-items: center;
+}
+a {
+  color: white;
 }
 </style>

@@ -19,7 +19,7 @@ export default {
   data () {
     return {
       chartOptions: {
-        backgroundColor: '#222',
+        backgroundColor: 'black',
         legend: {
         textStyle: {
           color: '#FFFFFF'
