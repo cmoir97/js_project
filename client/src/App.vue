@@ -104,8 +104,8 @@ export default {
 
     eventBus.$on('submit-mission', mission => this.requestedMissions.push(mission));
 
-    missionService.getMissions()
-    .then(data => this.requestedMissions = data);
+    // missionService.getMissions()
+    // .then(data => this.requestedMissions = data);
 }
 
 }
