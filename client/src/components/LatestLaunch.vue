@@ -8,8 +8,10 @@
         <p v-if="latestLaunch.launch_success == false">Launch Unsuccessful</p>
         <p v-if="latestLaunch.launch_success == null">Upcoming Launch</p>
         <p>{{ latestLaunch.details }}</p>
-        <img :src="`${latestLaunch.links.flickr_images[0]}`" alt="Launch Image" style="width:300px;height:300px;" float="right">
-        <iframe width="420" height="345" float="left" :src="`https://www.youtube.com/embed/${latestLaunch.links.youtube_id}`"></iframe>
+        <div id="mediaBox">
+        <img :src="`${latestLaunch.links.flickr_images[0]}`" alt="Launch Image">
+        <iframe :src="`https://www.youtube.com/embed/${latestLaunch.links.youtube_id}`"></iframe>
+      </div>
         <br>
         <a :href="`${latestLaunch.links.article_link}`" target="_blank">In the news</a>
         <br>
@@ -32,6 +34,19 @@ export default {
 </script>
 
 <style lang="css" scoped>
+img {
+  width:250px;
+  height:250px;
+  margin: 4px;
+
+}
+
+iframe{
+  width:250px;
+  height:250px;
+  margin: 4px;
+
+}
 
 #detailWrapper {
   background-color: teal;
@@ -39,8 +54,11 @@ export default {
   border-radius: 20px;
   padding: 20px;
   margin: 10px;
-  /* height: 150px;
-  width: 250px; */
   align-items: center;
+}
+
+#mediaBox {
+  display: inline-flex;
+
 }
 </style>
