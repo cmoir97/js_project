@@ -3,9 +3,10 @@
 
 <div id="app">
 <h1>SpaceX Launch Tracker</h1>
+<h1>Launch Nationality Chart</h1>
+<p>This chart shows something about nationalities. </p>
 <br>
-<h2>Hi</h2>
-<launch-nationality-chart/>
+<launch-nationality-chart :refactoredChartData="refactoredChartData"/>
 <launches-list :launches="launches" />
 <br>
 <launch-detail />
@@ -66,17 +67,30 @@ export default {
   computed: {
     nationalities() {
       return this.launches.map(launch => launch.rocket.second_stage.payloads[0].nationality)
-
-
-
     },
-    getUniqueNationalities() {
+    uniqueNationalities() {
       return this.launches.map((launch) => {
         return launch.rocket.second_stage.payloads[0].nationality;
       })
       .filter((uniqueLaunch, index, array) => {
         return array.indexOf(uniqueLaunch) === index;
       })
+    },
+    chartData() {
+      return this.uniqueNationalities.map((uniqueNation) => {
+        const numberOfOccurrences = this.nationalities.reduce((accumulator, nation) => {
+          return accumulator + (nation === uniqueNation);
+        }, 0);
+        return [uniqueNation, numberOfOccurrences]
+      })
+    },
+
+    refactoredChartData() {
+       const chartHeader = [["Nationality", "Number of Occurrences"]];
+       return chartHeader.concat(this.chartData)
+    },
+    splicedRefactoredChartData() {
+      return this.refactoredChartData.splice(20, 1)
     }
 
   },
@@ -92,6 +106,9 @@ export default {
     fetch('https://api.spacexdata.com/v3/launches/latest')
     .then(res => res.json())
     .then(data => this.latestLaunch = data)
+
+
+
 
     eventBus.$on('submit-mission', mission => this.requestedMissions.push(mission));
 
