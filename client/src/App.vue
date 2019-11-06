@@ -2,13 +2,18 @@
   <body>
 
 <div id="app">
-  <div class="navbar">
+  <!-- <div class="navbar">
 
   <button type="button" name="button" @click="homeClick"></button>
 
-</div>
+</div> -->
 
 <h1>SpaceX Launch Tracker</h1>
+<p>SpaceX is an American aerospace company founded in 2002 that helped usher in the era of commercial spaceflight. Its headquarters are in Hawthorne, California.</p>
+
+<p>SpaceX was formed by entrepreneur Elon Musk in the hopes of revolutionising the aerospace industry and making affordable spaceflight a reality. The company entered the arena with the Falcon 1 rocket, a two-stage liquid-fueled craft designed to send small satellites into orbit. The Falcon 1 was vastly cheaper to build and operate than its competitors, a field largely populated by spacecraft built by publicly owned and government-funded companies, such as Lockheed Martin and Boeing. Part of the rocket’s cost-effectiveness was made possible by the SpaceX-developed Merlin engine, a cheaper alternative to those used by other companies. SpaceX also focused on making reusable rockets (other launch vehicles are generally made for one-time use).</p>
+
+<p>Use the SpaceX Tracker App to find information about its launches and missions, view data about its launches, and even suggest your own mission for SpaceX to complete in the future!</p>
 <h1>Launch Nationality Chart</h1>
 <p>This chart shows the nationality of each launch's main client. </p>
 <launch-nationality-chart :splicedRefactoredChartData="splicedRefactoredChartData"/>
@@ -58,7 +63,7 @@ export default {
       launches: [],
       missions: [],
       requestedMissions: [],
-      latestLaunch: {}
+      latestLaunch: {},
       selectedView: 'Home'
     }
   },
@@ -97,7 +102,7 @@ export default {
   },
   methods: {
     homeClick() {
-      this.selectedView = home 
+      this.selectedView = home
     }
   },
   mounted(){
@@ -129,7 +134,8 @@ export default {
 <style lang="css" scoped>
 
 body {
-  background-color: salmon;
+  background-color: #222;
+  font-family: Arial;
 }
 
 div{
@@ -140,6 +146,9 @@ div{
   text-align: center;
   color: white;
   background: #222;
+  border-radius: 50;
+  border-color: salmon;
+
 }
 
 ul {
