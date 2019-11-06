@@ -8,8 +8,8 @@
         <p v-if="latestLaunch.launch_success == false">Launch Unsuccessful</p>
         <p v-if="latestLaunch.launch_success == null">Upcoming Launch</p>
         <p>{{ latestLaunch.details }}</p>
-        <img :src="`${latestLaunch.links.flickr_images[0]}`" alt="Launch Image" style="width:300px;height:300px;">
-        <iframe width="420" height="345" :src="`https://www.youtube.com/embed/${latestLaunch.links.youtube_id}`"></iframe>
+        <img :src="`${latestLaunch.links.flickr_images[0]}`" alt="Launch Image" style="width:300px;height:300px;" float="right">
+        <iframe width="420" height="345" float="left" :src="`https://www.youtube.com/embed/${latestLaunch.links.youtube_id}`"></iframe>
         <br>
         <a :href="`${latestLaunch.links.article_link}`" target="_blank">In the news</a>
         <br>
@@ -33,7 +33,7 @@ export default {
 
 <style lang="css" scoped>
 
-.detailWrapper {
+#detailWrapper {
   background-color: teal;
   border: 1px solid black;
   border-radius: 20px;
