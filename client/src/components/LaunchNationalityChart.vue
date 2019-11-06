@@ -1,8 +1,8 @@
 <template lang="html">
 <GChart
-v-if="chartData"
+v-if="refactoredChartData"
 type="PieChart"
-:data="chartData"
+:data="refactoredChartData"
 :options="chartOptions"
 />
 
@@ -18,13 +18,6 @@ export default {
   },
   data () {
     return {
-      chartData: [
-        ['Year', 'Sales'],
-        ['2014', 1000],
-        ['2015', 1170],
-        ['2016', 660],
-        ['2017', 1030]
-      ],
       chartOptions: {
         chart: {
           title: 'Company Performance',
@@ -32,7 +25,8 @@ export default {
         }
       },
     }
-  }
+  },
+  props: ["refactoredChartData"]
 }
 </script>
 
