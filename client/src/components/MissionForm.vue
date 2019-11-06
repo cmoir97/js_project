@@ -1,13 +1,13 @@
 <template lang="html">
   <form v-on:submit.prevent="handleSubmit">
     <h1>Request a mission</h1>
-    <label for="name">Name:</label>
+    <label for="name">Name</label>
     <input type="text" id="name" name="name" v-model="name" required/>
 
-    <label for="description">Purpose of the mission:</label>
+    <label for="description">Purpose of the mission</label>
     <input type="text" id="description" name="description" v-model="description" required/>
 
-    <label for="budget">Mission Budget:</label>
+    <label for="budget">Mission Budget</label>
     <input type="number" name="budget" v-model="budget" step="1000000" required placeholder="$"/>
 
     <input type="submit" id="save" value="Save" />
@@ -52,5 +52,6 @@ export default {
 <style lang="css" scoped>
 input {
   border-radius: 1000px;
+  margin: 5px;
 }
 </style>
