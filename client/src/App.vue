@@ -49,7 +49,10 @@
 
       <div :selectedView="selectedView" v-if="selectedView === 'chart'">
         <h1>Launch Nationality Chart</h1>
-        <p>This chart shows the nationality of each launch's main client. </p>
+        <p>Every SpaceX launch has a specific goal that it sets out to achieve.
+           This chart shows the nationality of each launches main customer,
+           the company or organisation who have provided SpaceX with a goal for that mission.
+           These goals can vary widely and include tasks such as refueling the ISS or deploying  satellites.</p>
         <launch-nationality-chart :splicedRefactoredChartData="splicedRefactoredChartData"/>
       </div>
     </div>
@@ -239,7 +242,7 @@ button {
   border-radius: 3px
 }
 #logo{
-  height: 200px;
+  height: 300px;
   width: 200px;
   display: block;
   margin-left: auto;
