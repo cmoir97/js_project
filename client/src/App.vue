@@ -183,6 +183,8 @@ h1 {
 body {
   background-color: black;
   font-family: Arial;
+  margin-right: 120px;
+  margin-left: 120px;
 }
 
 div{
