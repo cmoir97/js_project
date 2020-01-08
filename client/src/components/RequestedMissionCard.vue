@@ -20,7 +20,7 @@ export default {
 .requested-mission-card {
   background-color: teal;
   border: 1px solid black;
-  border-radius: 20px;
+  border-radius: 18px;
   padding: 20px;
   margin: 10px;
   height: 150px;
