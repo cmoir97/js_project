@@ -28,5 +28,4 @@ db.missions.insertMany([
     description: "Improve TV signal to Rockall.",
     budget: 5000000
   }
-
 ])
